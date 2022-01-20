@@ -1,0 +1,13 @@
+wide_alu:
+  incdirs:
+    - ../register_interface/include
+    - ../common_cells/include
+  files:
+    - rtl/hwpe_buffer_reg_pkg.sv
+    - rtl/hwpe_buffer_reg_top.sv
+    - rtl/hwpe_buffer.sv
+    - rtl/hwpe_buffer_top.sv
+  vlog_opts : [
+    -L register_interface_lib,
+    -L common_cells_lib
+  ]
