@@ -3,7 +3,7 @@
 
 module hwpe_buffer_top
     #(
-    parameter   BUFFER_WIDTH    = 32,
+    parameter   BUFFER_WIDTH    = 1024,
     parameter int unsigned  AXI_ADDR_WIDTH = 32,
     localparam int unsigned AXI_DATA_WIDTH = 32,
     parameter int unsigned  AXI_ID_WIDTH,

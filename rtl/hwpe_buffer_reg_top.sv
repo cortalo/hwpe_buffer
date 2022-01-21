@@ -10,7 +10,7 @@
 module hwpe_buffer_reg_top #(
     parameter type reg_req_t = logic,
     parameter type reg_rsp_t = logic,
-    parameter int AW = 3
+    parameter int AW = 8
 ) (
   input clk_i,
   input rst_ni,
@@ -68,25 +68,151 @@ module hwpe_buffer_reg_top #(
   // Define SW related signals
   // Format: <reg>_<field>_{wd|we|qs}
   //        or <reg>_{wd|we|qs} if field == 1 or 0
-  logic [31:0] data_in_wd;
-  logic data_in_we;
-  logic [31:0] data_out_qs;
-  logic data_out_re;
+  logic [31:0] data_in_0_wd;
+  logic data_in_0_we;
+  logic [31:0] data_in_1_wd;
+  logic data_in_1_we;
+  logic [31:0] data_in_2_wd;
+  logic data_in_2_we;
+  logic [31:0] data_in_3_wd;
+  logic data_in_3_we;
+  logic [31:0] data_in_4_wd;
+  logic data_in_4_we;
+  logic [31:0] data_in_5_wd;
+  logic data_in_5_we;
+  logic [31:0] data_in_6_wd;
+  logic data_in_6_we;
+  logic [31:0] data_in_7_wd;
+  logic data_in_7_we;
+  logic [31:0] data_in_8_wd;
+  logic data_in_8_we;
+  logic [31:0] data_in_9_wd;
+  logic data_in_9_we;
+  logic [31:0] data_in_10_wd;
+  logic data_in_10_we;
+  logic [31:0] data_in_11_wd;
+  logic data_in_11_we;
+  logic [31:0] data_in_12_wd;
+  logic data_in_12_we;
+  logic [31:0] data_in_13_wd;
+  logic data_in_13_we;
+  logic [31:0] data_in_14_wd;
+  logic data_in_14_we;
+  logic [31:0] data_in_15_wd;
+  logic data_in_15_we;
+  logic [31:0] data_in_16_wd;
+  logic data_in_16_we;
+  logic [31:0] data_in_17_wd;
+  logic data_in_17_we;
+  logic [31:0] data_in_18_wd;
+  logic data_in_18_we;
+  logic [31:0] data_in_19_wd;
+  logic data_in_19_we;
+  logic [31:0] data_in_20_wd;
+  logic data_in_20_we;
+  logic [31:0] data_in_21_wd;
+  logic data_in_21_we;
+  logic [31:0] data_in_22_wd;
+  logic data_in_22_we;
+  logic [31:0] data_in_23_wd;
+  logic data_in_23_we;
+  logic [31:0] data_in_24_wd;
+  logic data_in_24_we;
+  logic [31:0] data_in_25_wd;
+  logic data_in_25_we;
+  logic [31:0] data_in_26_wd;
+  logic data_in_26_we;
+  logic [31:0] data_in_27_wd;
+  logic data_in_27_we;
+  logic [31:0] data_in_28_wd;
+  logic data_in_28_we;
+  logic [31:0] data_in_29_wd;
+  logic data_in_29_we;
+  logic [31:0] data_in_30_wd;
+  logic data_in_30_we;
+  logic [31:0] data_in_31_wd;
+  logic data_in_31_we;
+  logic [31:0] data_out_0_qs;
+  logic data_out_0_re;
+  logic [31:0] data_out_1_qs;
+  logic data_out_1_re;
+  logic [31:0] data_out_2_qs;
+  logic data_out_2_re;
+  logic [31:0] data_out_3_qs;
+  logic data_out_3_re;
+  logic [31:0] data_out_4_qs;
+  logic data_out_4_re;
+  logic [31:0] data_out_5_qs;
+  logic data_out_5_re;
+  logic [31:0] data_out_6_qs;
+  logic data_out_6_re;
+  logic [31:0] data_out_7_qs;
+  logic data_out_7_re;
+  logic [31:0] data_out_8_qs;
+  logic data_out_8_re;
+  logic [31:0] data_out_9_qs;
+  logic data_out_9_re;
+  logic [31:0] data_out_10_qs;
+  logic data_out_10_re;
+  logic [31:0] data_out_11_qs;
+  logic data_out_11_re;
+  logic [31:0] data_out_12_qs;
+  logic data_out_12_re;
+  logic [31:0] data_out_13_qs;
+  logic data_out_13_re;
+  logic [31:0] data_out_14_qs;
+  logic data_out_14_re;
+  logic [31:0] data_out_15_qs;
+  logic data_out_15_re;
+  logic [31:0] data_out_16_qs;
+  logic data_out_16_re;
+  logic [31:0] data_out_17_qs;
+  logic data_out_17_re;
+  logic [31:0] data_out_18_qs;
+  logic data_out_18_re;
+  logic [31:0] data_out_19_qs;
+  logic data_out_19_re;
+  logic [31:0] data_out_20_qs;
+  logic data_out_20_re;
+  logic [31:0] data_out_21_qs;
+  logic data_out_21_re;
+  logic [31:0] data_out_22_qs;
+  logic data_out_22_re;
+  logic [31:0] data_out_23_qs;
+  logic data_out_23_re;
+  logic [31:0] data_out_24_qs;
+  logic data_out_24_re;
+  logic [31:0] data_out_25_qs;
+  logic data_out_25_re;
+  logic [31:0] data_out_26_qs;
+  logic data_out_26_re;
+  logic [31:0] data_out_27_qs;
+  logic data_out_27_re;
+  logic [31:0] data_out_28_qs;
+  logic data_out_28_re;
+  logic [31:0] data_out_29_qs;
+  logic data_out_29_re;
+  logic [31:0] data_out_30_qs;
+  logic data_out_30_re;
+  logic [31:0] data_out_31_qs;
+  logic data_out_31_re;
 
   // Register instances
-  // R[data_in]: V(False)
+
+  // Subregister 0 of Multireg data_in
+  // R[data_in_0]: V(False)
 
   prim_subreg #(
     .DW      (32),
     .SWACCESS("WO"),
     .RESVAL  (32'h0)
-  ) u_data_in (
+  ) u_data_in_0 (
     .clk_i   (clk_i    ),
     .rst_ni  (rst_ni  ),
 
     // from register interface
-    .we     (data_in_we),
-    .wd     (data_in_wd),
+    .we     (data_in_0_we),
+    .wd     (data_in_0_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -94,35 +220,1401 @@ module hwpe_buffer_reg_top #(
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.data_in.q ),
+    .q      (reg2hw.data_in[0].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 1 of Multireg data_in
+  // R[data_in_1]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_1 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_1_we),
+    .wd     (data_in_1_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[1].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 2 of Multireg data_in
+  // R[data_in_2]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_2 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_2_we),
+    .wd     (data_in_2_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[2].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 3 of Multireg data_in
+  // R[data_in_3]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_3 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_3_we),
+    .wd     (data_in_3_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[3].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 4 of Multireg data_in
+  // R[data_in_4]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_4 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_4_we),
+    .wd     (data_in_4_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[4].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 5 of Multireg data_in
+  // R[data_in_5]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_5 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_5_we),
+    .wd     (data_in_5_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[5].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 6 of Multireg data_in
+  // R[data_in_6]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_6 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_6_we),
+    .wd     (data_in_6_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[6].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 7 of Multireg data_in
+  // R[data_in_7]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_7 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_7_we),
+    .wd     (data_in_7_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[7].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 8 of Multireg data_in
+  // R[data_in_8]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_8 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_8_we),
+    .wd     (data_in_8_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[8].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 9 of Multireg data_in
+  // R[data_in_9]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_9 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_9_we),
+    .wd     (data_in_9_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[9].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 10 of Multireg data_in
+  // R[data_in_10]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_10 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_10_we),
+    .wd     (data_in_10_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[10].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 11 of Multireg data_in
+  // R[data_in_11]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_11 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_11_we),
+    .wd     (data_in_11_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[11].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 12 of Multireg data_in
+  // R[data_in_12]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_12 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_12_we),
+    .wd     (data_in_12_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[12].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 13 of Multireg data_in
+  // R[data_in_13]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_13 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_13_we),
+    .wd     (data_in_13_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[13].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 14 of Multireg data_in
+  // R[data_in_14]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_14 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_14_we),
+    .wd     (data_in_14_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[14].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 15 of Multireg data_in
+  // R[data_in_15]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_15 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_15_we),
+    .wd     (data_in_15_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[15].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 16 of Multireg data_in
+  // R[data_in_16]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_16 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_16_we),
+    .wd     (data_in_16_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[16].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 17 of Multireg data_in
+  // R[data_in_17]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_17 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_17_we),
+    .wd     (data_in_17_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[17].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 18 of Multireg data_in
+  // R[data_in_18]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_18 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_18_we),
+    .wd     (data_in_18_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[18].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 19 of Multireg data_in
+  // R[data_in_19]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_19 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_19_we),
+    .wd     (data_in_19_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[19].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 20 of Multireg data_in
+  // R[data_in_20]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_20 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_20_we),
+    .wd     (data_in_20_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[20].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 21 of Multireg data_in
+  // R[data_in_21]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_21 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_21_we),
+    .wd     (data_in_21_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[21].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 22 of Multireg data_in
+  // R[data_in_22]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_22 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_22_we),
+    .wd     (data_in_22_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[22].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 23 of Multireg data_in
+  // R[data_in_23]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_23 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_23_we),
+    .wd     (data_in_23_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[23].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 24 of Multireg data_in
+  // R[data_in_24]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_24 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_24_we),
+    .wd     (data_in_24_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[24].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 25 of Multireg data_in
+  // R[data_in_25]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_25 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_25_we),
+    .wd     (data_in_25_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[25].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 26 of Multireg data_in
+  // R[data_in_26]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_26 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_26_we),
+    .wd     (data_in_26_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[26].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 27 of Multireg data_in
+  // R[data_in_27]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_27 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_27_we),
+    .wd     (data_in_27_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[27].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 28 of Multireg data_in
+  // R[data_in_28]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_28 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_28_we),
+    .wd     (data_in_28_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[28].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 29 of Multireg data_in
+  // R[data_in_29]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_29 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_29_we),
+    .wd     (data_in_29_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[29].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 30 of Multireg data_in
+  // R[data_in_30]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_30 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_30_we),
+    .wd     (data_in_30_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[30].q ),
+
+    .qs     ()
+  );
+
+  // Subregister 31 of Multireg data_in
+  // R[data_in_31]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("WO"),
+    .RESVAL  (32'h0)
+  ) u_data_in_31 (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (data_in_31_we),
+    .wd     (data_in_31_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.data_in[31].q ),
 
     .qs     ()
   );
 
 
-  // R[data_out]: V(True)
+
+  // Subregister 0 of Multireg data_out
+  // R[data_out_0]: V(True)
 
   prim_subreg_ext #(
     .DW    (32)
-  ) u_data_out (
-    .re     (data_out_re),
+  ) u_data_out_0 (
+    .re     (data_out_0_re),
     .we     (1'b0),
     .wd     ('0),
-    .d      (hw2reg.data_out.d),
+    .d      (hw2reg.data_out[0].d),
     .qre    (),
     .qe     (),
     .q      (),
-    .qs     (data_out_qs)
+    .qs     (data_out_0_qs)
+  );
+
+  // Subregister 1 of Multireg data_out
+  // R[data_out_1]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_1 (
+    .re     (data_out_1_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[1].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_1_qs)
+  );
+
+  // Subregister 2 of Multireg data_out
+  // R[data_out_2]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_2 (
+    .re     (data_out_2_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[2].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_2_qs)
+  );
+
+  // Subregister 3 of Multireg data_out
+  // R[data_out_3]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_3 (
+    .re     (data_out_3_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[3].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_3_qs)
+  );
+
+  // Subregister 4 of Multireg data_out
+  // R[data_out_4]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_4 (
+    .re     (data_out_4_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[4].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_4_qs)
+  );
+
+  // Subregister 5 of Multireg data_out
+  // R[data_out_5]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_5 (
+    .re     (data_out_5_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[5].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_5_qs)
+  );
+
+  // Subregister 6 of Multireg data_out
+  // R[data_out_6]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_6 (
+    .re     (data_out_6_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[6].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_6_qs)
+  );
+
+  // Subregister 7 of Multireg data_out
+  // R[data_out_7]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_7 (
+    .re     (data_out_7_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[7].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_7_qs)
+  );
+
+  // Subregister 8 of Multireg data_out
+  // R[data_out_8]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_8 (
+    .re     (data_out_8_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[8].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_8_qs)
+  );
+
+  // Subregister 9 of Multireg data_out
+  // R[data_out_9]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_9 (
+    .re     (data_out_9_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[9].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_9_qs)
+  );
+
+  // Subregister 10 of Multireg data_out
+  // R[data_out_10]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_10 (
+    .re     (data_out_10_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[10].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_10_qs)
+  );
+
+  // Subregister 11 of Multireg data_out
+  // R[data_out_11]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_11 (
+    .re     (data_out_11_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[11].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_11_qs)
+  );
+
+  // Subregister 12 of Multireg data_out
+  // R[data_out_12]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_12 (
+    .re     (data_out_12_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[12].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_12_qs)
+  );
+
+  // Subregister 13 of Multireg data_out
+  // R[data_out_13]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_13 (
+    .re     (data_out_13_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[13].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_13_qs)
+  );
+
+  // Subregister 14 of Multireg data_out
+  // R[data_out_14]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_14 (
+    .re     (data_out_14_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[14].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_14_qs)
+  );
+
+  // Subregister 15 of Multireg data_out
+  // R[data_out_15]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_15 (
+    .re     (data_out_15_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[15].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_15_qs)
+  );
+
+  // Subregister 16 of Multireg data_out
+  // R[data_out_16]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_16 (
+    .re     (data_out_16_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[16].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_16_qs)
+  );
+
+  // Subregister 17 of Multireg data_out
+  // R[data_out_17]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_17 (
+    .re     (data_out_17_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[17].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_17_qs)
+  );
+
+  // Subregister 18 of Multireg data_out
+  // R[data_out_18]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_18 (
+    .re     (data_out_18_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[18].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_18_qs)
+  );
+
+  // Subregister 19 of Multireg data_out
+  // R[data_out_19]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_19 (
+    .re     (data_out_19_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[19].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_19_qs)
+  );
+
+  // Subregister 20 of Multireg data_out
+  // R[data_out_20]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_20 (
+    .re     (data_out_20_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[20].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_20_qs)
+  );
+
+  // Subregister 21 of Multireg data_out
+  // R[data_out_21]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_21 (
+    .re     (data_out_21_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[21].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_21_qs)
+  );
+
+  // Subregister 22 of Multireg data_out
+  // R[data_out_22]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_22 (
+    .re     (data_out_22_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[22].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_22_qs)
+  );
+
+  // Subregister 23 of Multireg data_out
+  // R[data_out_23]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_23 (
+    .re     (data_out_23_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[23].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_23_qs)
+  );
+
+  // Subregister 24 of Multireg data_out
+  // R[data_out_24]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_24 (
+    .re     (data_out_24_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[24].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_24_qs)
+  );
+
+  // Subregister 25 of Multireg data_out
+  // R[data_out_25]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_25 (
+    .re     (data_out_25_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[25].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_25_qs)
+  );
+
+  // Subregister 26 of Multireg data_out
+  // R[data_out_26]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_26 (
+    .re     (data_out_26_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[26].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_26_qs)
+  );
+
+  // Subregister 27 of Multireg data_out
+  // R[data_out_27]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_27 (
+    .re     (data_out_27_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[27].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_27_qs)
+  );
+
+  // Subregister 28 of Multireg data_out
+  // R[data_out_28]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_28 (
+    .re     (data_out_28_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[28].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_28_qs)
+  );
+
+  // Subregister 29 of Multireg data_out
+  // R[data_out_29]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_29 (
+    .re     (data_out_29_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[29].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_29_qs)
+  );
+
+  // Subregister 30 of Multireg data_out
+  // R[data_out_30]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_30 (
+    .re     (data_out_30_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[30].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_30_qs)
+  );
+
+  // Subregister 31 of Multireg data_out
+  // R[data_out_31]: V(True)
+
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_data_out_31 (
+    .re     (data_out_31_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.data_out[31].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .qs     (data_out_31_qs)
   );
 
 
 
 
-  logic [1:0] addr_hit;
+  logic [63:0] addr_hit;
   always_comb begin
     addr_hit = '0;
-    addr_hit[0] = (reg_addr == HWPE_BUFFER_DATA_IN_OFFSET);
-    addr_hit[1] = (reg_addr == HWPE_BUFFER_DATA_OUT_OFFSET);
+    addr_hit[ 0] = (reg_addr == HWPE_BUFFER_DATA_IN_0_OFFSET);
+    addr_hit[ 1] = (reg_addr == HWPE_BUFFER_DATA_IN_1_OFFSET);
+    addr_hit[ 2] = (reg_addr == HWPE_BUFFER_DATA_IN_2_OFFSET);
+    addr_hit[ 3] = (reg_addr == HWPE_BUFFER_DATA_IN_3_OFFSET);
+    addr_hit[ 4] = (reg_addr == HWPE_BUFFER_DATA_IN_4_OFFSET);
+    addr_hit[ 5] = (reg_addr == HWPE_BUFFER_DATA_IN_5_OFFSET);
+    addr_hit[ 6] = (reg_addr == HWPE_BUFFER_DATA_IN_6_OFFSET);
+    addr_hit[ 7] = (reg_addr == HWPE_BUFFER_DATA_IN_7_OFFSET);
+    addr_hit[ 8] = (reg_addr == HWPE_BUFFER_DATA_IN_8_OFFSET);
+    addr_hit[ 9] = (reg_addr == HWPE_BUFFER_DATA_IN_9_OFFSET);
+    addr_hit[10] = (reg_addr == HWPE_BUFFER_DATA_IN_10_OFFSET);
+    addr_hit[11] = (reg_addr == HWPE_BUFFER_DATA_IN_11_OFFSET);
+    addr_hit[12] = (reg_addr == HWPE_BUFFER_DATA_IN_12_OFFSET);
+    addr_hit[13] = (reg_addr == HWPE_BUFFER_DATA_IN_13_OFFSET);
+    addr_hit[14] = (reg_addr == HWPE_BUFFER_DATA_IN_14_OFFSET);
+    addr_hit[15] = (reg_addr == HWPE_BUFFER_DATA_IN_15_OFFSET);
+    addr_hit[16] = (reg_addr == HWPE_BUFFER_DATA_IN_16_OFFSET);
+    addr_hit[17] = (reg_addr == HWPE_BUFFER_DATA_IN_17_OFFSET);
+    addr_hit[18] = (reg_addr == HWPE_BUFFER_DATA_IN_18_OFFSET);
+    addr_hit[19] = (reg_addr == HWPE_BUFFER_DATA_IN_19_OFFSET);
+    addr_hit[20] = (reg_addr == HWPE_BUFFER_DATA_IN_20_OFFSET);
+    addr_hit[21] = (reg_addr == HWPE_BUFFER_DATA_IN_21_OFFSET);
+    addr_hit[22] = (reg_addr == HWPE_BUFFER_DATA_IN_22_OFFSET);
+    addr_hit[23] = (reg_addr == HWPE_BUFFER_DATA_IN_23_OFFSET);
+    addr_hit[24] = (reg_addr == HWPE_BUFFER_DATA_IN_24_OFFSET);
+    addr_hit[25] = (reg_addr == HWPE_BUFFER_DATA_IN_25_OFFSET);
+    addr_hit[26] = (reg_addr == HWPE_BUFFER_DATA_IN_26_OFFSET);
+    addr_hit[27] = (reg_addr == HWPE_BUFFER_DATA_IN_27_OFFSET);
+    addr_hit[28] = (reg_addr == HWPE_BUFFER_DATA_IN_28_OFFSET);
+    addr_hit[29] = (reg_addr == HWPE_BUFFER_DATA_IN_29_OFFSET);
+    addr_hit[30] = (reg_addr == HWPE_BUFFER_DATA_IN_30_OFFSET);
+    addr_hit[31] = (reg_addr == HWPE_BUFFER_DATA_IN_31_OFFSET);
+    addr_hit[32] = (reg_addr == HWPE_BUFFER_DATA_OUT_0_OFFSET);
+    addr_hit[33] = (reg_addr == HWPE_BUFFER_DATA_OUT_1_OFFSET);
+    addr_hit[34] = (reg_addr == HWPE_BUFFER_DATA_OUT_2_OFFSET);
+    addr_hit[35] = (reg_addr == HWPE_BUFFER_DATA_OUT_3_OFFSET);
+    addr_hit[36] = (reg_addr == HWPE_BUFFER_DATA_OUT_4_OFFSET);
+    addr_hit[37] = (reg_addr == HWPE_BUFFER_DATA_OUT_5_OFFSET);
+    addr_hit[38] = (reg_addr == HWPE_BUFFER_DATA_OUT_6_OFFSET);
+    addr_hit[39] = (reg_addr == HWPE_BUFFER_DATA_OUT_7_OFFSET);
+    addr_hit[40] = (reg_addr == HWPE_BUFFER_DATA_OUT_8_OFFSET);
+    addr_hit[41] = (reg_addr == HWPE_BUFFER_DATA_OUT_9_OFFSET);
+    addr_hit[42] = (reg_addr == HWPE_BUFFER_DATA_OUT_10_OFFSET);
+    addr_hit[43] = (reg_addr == HWPE_BUFFER_DATA_OUT_11_OFFSET);
+    addr_hit[44] = (reg_addr == HWPE_BUFFER_DATA_OUT_12_OFFSET);
+    addr_hit[45] = (reg_addr == HWPE_BUFFER_DATA_OUT_13_OFFSET);
+    addr_hit[46] = (reg_addr == HWPE_BUFFER_DATA_OUT_14_OFFSET);
+    addr_hit[47] = (reg_addr == HWPE_BUFFER_DATA_OUT_15_OFFSET);
+    addr_hit[48] = (reg_addr == HWPE_BUFFER_DATA_OUT_16_OFFSET);
+    addr_hit[49] = (reg_addr == HWPE_BUFFER_DATA_OUT_17_OFFSET);
+    addr_hit[50] = (reg_addr == HWPE_BUFFER_DATA_OUT_18_OFFSET);
+    addr_hit[51] = (reg_addr == HWPE_BUFFER_DATA_OUT_19_OFFSET);
+    addr_hit[52] = (reg_addr == HWPE_BUFFER_DATA_OUT_20_OFFSET);
+    addr_hit[53] = (reg_addr == HWPE_BUFFER_DATA_OUT_21_OFFSET);
+    addr_hit[54] = (reg_addr == HWPE_BUFFER_DATA_OUT_22_OFFSET);
+    addr_hit[55] = (reg_addr == HWPE_BUFFER_DATA_OUT_23_OFFSET);
+    addr_hit[56] = (reg_addr == HWPE_BUFFER_DATA_OUT_24_OFFSET);
+    addr_hit[57] = (reg_addr == HWPE_BUFFER_DATA_OUT_25_OFFSET);
+    addr_hit[58] = (reg_addr == HWPE_BUFFER_DATA_OUT_26_OFFSET);
+    addr_hit[59] = (reg_addr == HWPE_BUFFER_DATA_OUT_27_OFFSET);
+    addr_hit[60] = (reg_addr == HWPE_BUFFER_DATA_OUT_28_OFFSET);
+    addr_hit[61] = (reg_addr == HWPE_BUFFER_DATA_OUT_29_OFFSET);
+    addr_hit[62] = (reg_addr == HWPE_BUFFER_DATA_OUT_30_OFFSET);
+    addr_hit[63] = (reg_addr == HWPE_BUFFER_DATA_OUT_31_OFFSET);
   end
 
   assign addrmiss = (reg_re || reg_we) ? ~|addr_hit : 1'b0 ;
@@ -130,14 +1622,231 @@ module hwpe_buffer_reg_top #(
   // Check sub-word write is permitted
   always_comb begin
     wr_err = (reg_we &
-              ((addr_hit[0] & (|(HWPE_BUFFER_PERMIT[0] & ~reg_be))) |
-               (addr_hit[1] & (|(HWPE_BUFFER_PERMIT[1] & ~reg_be)))));
+              ((addr_hit[ 0] & (|(HWPE_BUFFER_PERMIT[ 0] & ~reg_be))) |
+               (addr_hit[ 1] & (|(HWPE_BUFFER_PERMIT[ 1] & ~reg_be))) |
+               (addr_hit[ 2] & (|(HWPE_BUFFER_PERMIT[ 2] & ~reg_be))) |
+               (addr_hit[ 3] & (|(HWPE_BUFFER_PERMIT[ 3] & ~reg_be))) |
+               (addr_hit[ 4] & (|(HWPE_BUFFER_PERMIT[ 4] & ~reg_be))) |
+               (addr_hit[ 5] & (|(HWPE_BUFFER_PERMIT[ 5] & ~reg_be))) |
+               (addr_hit[ 6] & (|(HWPE_BUFFER_PERMIT[ 6] & ~reg_be))) |
+               (addr_hit[ 7] & (|(HWPE_BUFFER_PERMIT[ 7] & ~reg_be))) |
+               (addr_hit[ 8] & (|(HWPE_BUFFER_PERMIT[ 8] & ~reg_be))) |
+               (addr_hit[ 9] & (|(HWPE_BUFFER_PERMIT[ 9] & ~reg_be))) |
+               (addr_hit[10] & (|(HWPE_BUFFER_PERMIT[10] & ~reg_be))) |
+               (addr_hit[11] & (|(HWPE_BUFFER_PERMIT[11] & ~reg_be))) |
+               (addr_hit[12] & (|(HWPE_BUFFER_PERMIT[12] & ~reg_be))) |
+               (addr_hit[13] & (|(HWPE_BUFFER_PERMIT[13] & ~reg_be))) |
+               (addr_hit[14] & (|(HWPE_BUFFER_PERMIT[14] & ~reg_be))) |
+               (addr_hit[15] & (|(HWPE_BUFFER_PERMIT[15] & ~reg_be))) |
+               (addr_hit[16] & (|(HWPE_BUFFER_PERMIT[16] & ~reg_be))) |
+               (addr_hit[17] & (|(HWPE_BUFFER_PERMIT[17] & ~reg_be))) |
+               (addr_hit[18] & (|(HWPE_BUFFER_PERMIT[18] & ~reg_be))) |
+               (addr_hit[19] & (|(HWPE_BUFFER_PERMIT[19] & ~reg_be))) |
+               (addr_hit[20] & (|(HWPE_BUFFER_PERMIT[20] & ~reg_be))) |
+               (addr_hit[21] & (|(HWPE_BUFFER_PERMIT[21] & ~reg_be))) |
+               (addr_hit[22] & (|(HWPE_BUFFER_PERMIT[22] & ~reg_be))) |
+               (addr_hit[23] & (|(HWPE_BUFFER_PERMIT[23] & ~reg_be))) |
+               (addr_hit[24] & (|(HWPE_BUFFER_PERMIT[24] & ~reg_be))) |
+               (addr_hit[25] & (|(HWPE_BUFFER_PERMIT[25] & ~reg_be))) |
+               (addr_hit[26] & (|(HWPE_BUFFER_PERMIT[26] & ~reg_be))) |
+               (addr_hit[27] & (|(HWPE_BUFFER_PERMIT[27] & ~reg_be))) |
+               (addr_hit[28] & (|(HWPE_BUFFER_PERMIT[28] & ~reg_be))) |
+               (addr_hit[29] & (|(HWPE_BUFFER_PERMIT[29] & ~reg_be))) |
+               (addr_hit[30] & (|(HWPE_BUFFER_PERMIT[30] & ~reg_be))) |
+               (addr_hit[31] & (|(HWPE_BUFFER_PERMIT[31] & ~reg_be))) |
+               (addr_hit[32] & (|(HWPE_BUFFER_PERMIT[32] & ~reg_be))) |
+               (addr_hit[33] & (|(HWPE_BUFFER_PERMIT[33] & ~reg_be))) |
+               (addr_hit[34] & (|(HWPE_BUFFER_PERMIT[34] & ~reg_be))) |
+               (addr_hit[35] & (|(HWPE_BUFFER_PERMIT[35] & ~reg_be))) |
+               (addr_hit[36] & (|(HWPE_BUFFER_PERMIT[36] & ~reg_be))) |
+               (addr_hit[37] & (|(HWPE_BUFFER_PERMIT[37] & ~reg_be))) |
+               (addr_hit[38] & (|(HWPE_BUFFER_PERMIT[38] & ~reg_be))) |
+               (addr_hit[39] & (|(HWPE_BUFFER_PERMIT[39] & ~reg_be))) |
+               (addr_hit[40] & (|(HWPE_BUFFER_PERMIT[40] & ~reg_be))) |
+               (addr_hit[41] & (|(HWPE_BUFFER_PERMIT[41] & ~reg_be))) |
+               (addr_hit[42] & (|(HWPE_BUFFER_PERMIT[42] & ~reg_be))) |
+               (addr_hit[43] & (|(HWPE_BUFFER_PERMIT[43] & ~reg_be))) |
+               (addr_hit[44] & (|(HWPE_BUFFER_PERMIT[44] & ~reg_be))) |
+               (addr_hit[45] & (|(HWPE_BUFFER_PERMIT[45] & ~reg_be))) |
+               (addr_hit[46] & (|(HWPE_BUFFER_PERMIT[46] & ~reg_be))) |
+               (addr_hit[47] & (|(HWPE_BUFFER_PERMIT[47] & ~reg_be))) |
+               (addr_hit[48] & (|(HWPE_BUFFER_PERMIT[48] & ~reg_be))) |
+               (addr_hit[49] & (|(HWPE_BUFFER_PERMIT[49] & ~reg_be))) |
+               (addr_hit[50] & (|(HWPE_BUFFER_PERMIT[50] & ~reg_be))) |
+               (addr_hit[51] & (|(HWPE_BUFFER_PERMIT[51] & ~reg_be))) |
+               (addr_hit[52] & (|(HWPE_BUFFER_PERMIT[52] & ~reg_be))) |
+               (addr_hit[53] & (|(HWPE_BUFFER_PERMIT[53] & ~reg_be))) |
+               (addr_hit[54] & (|(HWPE_BUFFER_PERMIT[54] & ~reg_be))) |
+               (addr_hit[55] & (|(HWPE_BUFFER_PERMIT[55] & ~reg_be))) |
+               (addr_hit[56] & (|(HWPE_BUFFER_PERMIT[56] & ~reg_be))) |
+               (addr_hit[57] & (|(HWPE_BUFFER_PERMIT[57] & ~reg_be))) |
+               (addr_hit[58] & (|(HWPE_BUFFER_PERMIT[58] & ~reg_be))) |
+               (addr_hit[59] & (|(HWPE_BUFFER_PERMIT[59] & ~reg_be))) |
+               (addr_hit[60] & (|(HWPE_BUFFER_PERMIT[60] & ~reg_be))) |
+               (addr_hit[61] & (|(HWPE_BUFFER_PERMIT[61] & ~reg_be))) |
+               (addr_hit[62] & (|(HWPE_BUFFER_PERMIT[62] & ~reg_be))) |
+               (addr_hit[63] & (|(HWPE_BUFFER_PERMIT[63] & ~reg_be)))));
   end
 
-  assign data_in_we = addr_hit[0] & reg_we & !reg_error;
-  assign data_in_wd = reg_wdata[31:0];
+  assign data_in_0_we = addr_hit[0] & reg_we & !reg_error;
+  assign data_in_0_wd = reg_wdata[31:0];
 
-  assign data_out_re = addr_hit[1] & reg_re & !reg_error;
+  assign data_in_1_we = addr_hit[1] & reg_we & !reg_error;
+  assign data_in_1_wd = reg_wdata[31:0];
+
+  assign data_in_2_we = addr_hit[2] & reg_we & !reg_error;
+  assign data_in_2_wd = reg_wdata[31:0];
+
+  assign data_in_3_we = addr_hit[3] & reg_we & !reg_error;
+  assign data_in_3_wd = reg_wdata[31:0];
+
+  assign data_in_4_we = addr_hit[4] & reg_we & !reg_error;
+  assign data_in_4_wd = reg_wdata[31:0];
+
+  assign data_in_5_we = addr_hit[5] & reg_we & !reg_error;
+  assign data_in_5_wd = reg_wdata[31:0];
+
+  assign data_in_6_we = addr_hit[6] & reg_we & !reg_error;
+  assign data_in_6_wd = reg_wdata[31:0];
+
+  assign data_in_7_we = addr_hit[7] & reg_we & !reg_error;
+  assign data_in_7_wd = reg_wdata[31:0];
+
+  assign data_in_8_we = addr_hit[8] & reg_we & !reg_error;
+  assign data_in_8_wd = reg_wdata[31:0];
+
+  assign data_in_9_we = addr_hit[9] & reg_we & !reg_error;
+  assign data_in_9_wd = reg_wdata[31:0];
+
+  assign data_in_10_we = addr_hit[10] & reg_we & !reg_error;
+  assign data_in_10_wd = reg_wdata[31:0];
+
+  assign data_in_11_we = addr_hit[11] & reg_we & !reg_error;
+  assign data_in_11_wd = reg_wdata[31:0];
+
+  assign data_in_12_we = addr_hit[12] & reg_we & !reg_error;
+  assign data_in_12_wd = reg_wdata[31:0];
+
+  assign data_in_13_we = addr_hit[13] & reg_we & !reg_error;
+  assign data_in_13_wd = reg_wdata[31:0];
+
+  assign data_in_14_we = addr_hit[14] & reg_we & !reg_error;
+  assign data_in_14_wd = reg_wdata[31:0];
+
+  assign data_in_15_we = addr_hit[15] & reg_we & !reg_error;
+  assign data_in_15_wd = reg_wdata[31:0];
+
+  assign data_in_16_we = addr_hit[16] & reg_we & !reg_error;
+  assign data_in_16_wd = reg_wdata[31:0];
+
+  assign data_in_17_we = addr_hit[17] & reg_we & !reg_error;
+  assign data_in_17_wd = reg_wdata[31:0];
+
+  assign data_in_18_we = addr_hit[18] & reg_we & !reg_error;
+  assign data_in_18_wd = reg_wdata[31:0];
+
+  assign data_in_19_we = addr_hit[19] & reg_we & !reg_error;
+  assign data_in_19_wd = reg_wdata[31:0];
+
+  assign data_in_20_we = addr_hit[20] & reg_we & !reg_error;
+  assign data_in_20_wd = reg_wdata[31:0];
+
+  assign data_in_21_we = addr_hit[21] & reg_we & !reg_error;
+  assign data_in_21_wd = reg_wdata[31:0];
+
+  assign data_in_22_we = addr_hit[22] & reg_we & !reg_error;
+  assign data_in_22_wd = reg_wdata[31:0];
+
+  assign data_in_23_we = addr_hit[23] & reg_we & !reg_error;
+  assign data_in_23_wd = reg_wdata[31:0];
+
+  assign data_in_24_we = addr_hit[24] & reg_we & !reg_error;
+  assign data_in_24_wd = reg_wdata[31:0];
+
+  assign data_in_25_we = addr_hit[25] & reg_we & !reg_error;
+  assign data_in_25_wd = reg_wdata[31:0];
+
+  assign data_in_26_we = addr_hit[26] & reg_we & !reg_error;
+  assign data_in_26_wd = reg_wdata[31:0];
+
+  assign data_in_27_we = addr_hit[27] & reg_we & !reg_error;
+  assign data_in_27_wd = reg_wdata[31:0];
+
+  assign data_in_28_we = addr_hit[28] & reg_we & !reg_error;
+  assign data_in_28_wd = reg_wdata[31:0];
+
+  assign data_in_29_we = addr_hit[29] & reg_we & !reg_error;
+  assign data_in_29_wd = reg_wdata[31:0];
+
+  assign data_in_30_we = addr_hit[30] & reg_we & !reg_error;
+  assign data_in_30_wd = reg_wdata[31:0];
+
+  assign data_in_31_we = addr_hit[31] & reg_we & !reg_error;
+  assign data_in_31_wd = reg_wdata[31:0];
+
+  assign data_out_0_re = addr_hit[32] & reg_re & !reg_error;
+
+  assign data_out_1_re = addr_hit[33] & reg_re & !reg_error;
+
+  assign data_out_2_re = addr_hit[34] & reg_re & !reg_error;
+
+  assign data_out_3_re = addr_hit[35] & reg_re & !reg_error;
+
+  assign data_out_4_re = addr_hit[36] & reg_re & !reg_error;
+
+  assign data_out_5_re = addr_hit[37] & reg_re & !reg_error;
+
+  assign data_out_6_re = addr_hit[38] & reg_re & !reg_error;
+
+  assign data_out_7_re = addr_hit[39] & reg_re & !reg_error;
+
+  assign data_out_8_re = addr_hit[40] & reg_re & !reg_error;
+
+  assign data_out_9_re = addr_hit[41] & reg_re & !reg_error;
+
+  assign data_out_10_re = addr_hit[42] & reg_re & !reg_error;
+
+  assign data_out_11_re = addr_hit[43] & reg_re & !reg_error;
+
+  assign data_out_12_re = addr_hit[44] & reg_re & !reg_error;
+
+  assign data_out_13_re = addr_hit[45] & reg_re & !reg_error;
+
+  assign data_out_14_re = addr_hit[46] & reg_re & !reg_error;
+
+  assign data_out_15_re = addr_hit[47] & reg_re & !reg_error;
+
+  assign data_out_16_re = addr_hit[48] & reg_re & !reg_error;
+
+  assign data_out_17_re = addr_hit[49] & reg_re & !reg_error;
+
+  assign data_out_18_re = addr_hit[50] & reg_re & !reg_error;
+
+  assign data_out_19_re = addr_hit[51] & reg_re & !reg_error;
+
+  assign data_out_20_re = addr_hit[52] & reg_re & !reg_error;
+
+  assign data_out_21_re = addr_hit[53] & reg_re & !reg_error;
+
+  assign data_out_22_re = addr_hit[54] & reg_re & !reg_error;
+
+  assign data_out_23_re = addr_hit[55] & reg_re & !reg_error;
+
+  assign data_out_24_re = addr_hit[56] & reg_re & !reg_error;
+
+  assign data_out_25_re = addr_hit[57] & reg_re & !reg_error;
+
+  assign data_out_26_re = addr_hit[58] & reg_re & !reg_error;
+
+  assign data_out_27_re = addr_hit[59] & reg_re & !reg_error;
+
+  assign data_out_28_re = addr_hit[60] & reg_re & !reg_error;
+
+  assign data_out_29_re = addr_hit[61] & reg_re & !reg_error;
+
+  assign data_out_30_re = addr_hit[62] & reg_re & !reg_error;
+
+  assign data_out_31_re = addr_hit[63] & reg_re & !reg_error;
 
   // Read data return
   always_comb begin
@@ -148,7 +1857,255 @@ module hwpe_buffer_reg_top #(
       end
 
       addr_hit[1]: begin
-        reg_rdata_next[31:0] = data_out_qs;
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[2]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[3]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[4]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[5]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[6]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[7]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[8]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[9]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[10]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[11]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[12]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[13]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[14]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[15]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[16]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[17]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[18]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[19]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[20]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[21]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[22]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[23]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[24]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[25]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[26]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[27]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[28]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[29]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[30]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[31]: begin
+        reg_rdata_next[31:0] = '0;
+      end
+
+      addr_hit[32]: begin
+        reg_rdata_next[31:0] = data_out_0_qs;
+      end
+
+      addr_hit[33]: begin
+        reg_rdata_next[31:0] = data_out_1_qs;
+      end
+
+      addr_hit[34]: begin
+        reg_rdata_next[31:0] = data_out_2_qs;
+      end
+
+      addr_hit[35]: begin
+        reg_rdata_next[31:0] = data_out_3_qs;
+      end
+
+      addr_hit[36]: begin
+        reg_rdata_next[31:0] = data_out_4_qs;
+      end
+
+      addr_hit[37]: begin
+        reg_rdata_next[31:0] = data_out_5_qs;
+      end
+
+      addr_hit[38]: begin
+        reg_rdata_next[31:0] = data_out_6_qs;
+      end
+
+      addr_hit[39]: begin
+        reg_rdata_next[31:0] = data_out_7_qs;
+      end
+
+      addr_hit[40]: begin
+        reg_rdata_next[31:0] = data_out_8_qs;
+      end
+
+      addr_hit[41]: begin
+        reg_rdata_next[31:0] = data_out_9_qs;
+      end
+
+      addr_hit[42]: begin
+        reg_rdata_next[31:0] = data_out_10_qs;
+      end
+
+      addr_hit[43]: begin
+        reg_rdata_next[31:0] = data_out_11_qs;
+      end
+
+      addr_hit[44]: begin
+        reg_rdata_next[31:0] = data_out_12_qs;
+      end
+
+      addr_hit[45]: begin
+        reg_rdata_next[31:0] = data_out_13_qs;
+      end
+
+      addr_hit[46]: begin
+        reg_rdata_next[31:0] = data_out_14_qs;
+      end
+
+      addr_hit[47]: begin
+        reg_rdata_next[31:0] = data_out_15_qs;
+      end
+
+      addr_hit[48]: begin
+        reg_rdata_next[31:0] = data_out_16_qs;
+      end
+
+      addr_hit[49]: begin
+        reg_rdata_next[31:0] = data_out_17_qs;
+      end
+
+      addr_hit[50]: begin
+        reg_rdata_next[31:0] = data_out_18_qs;
+      end
+
+      addr_hit[51]: begin
+        reg_rdata_next[31:0] = data_out_19_qs;
+      end
+
+      addr_hit[52]: begin
+        reg_rdata_next[31:0] = data_out_20_qs;
+      end
+
+      addr_hit[53]: begin
+        reg_rdata_next[31:0] = data_out_21_qs;
+      end
+
+      addr_hit[54]: begin
+        reg_rdata_next[31:0] = data_out_22_qs;
+      end
+
+      addr_hit[55]: begin
+        reg_rdata_next[31:0] = data_out_23_qs;
+      end
+
+      addr_hit[56]: begin
+        reg_rdata_next[31:0] = data_out_24_qs;
+      end
+
+      addr_hit[57]: begin
+        reg_rdata_next[31:0] = data_out_25_qs;
+      end
+
+      addr_hit[58]: begin
+        reg_rdata_next[31:0] = data_out_26_qs;
+      end
+
+      addr_hit[59]: begin
+        reg_rdata_next[31:0] = data_out_27_qs;
+      end
+
+      addr_hit[60]: begin
+        reg_rdata_next[31:0] = data_out_28_qs;
+      end
+
+      addr_hit[61]: begin
+        reg_rdata_next[31:0] = data_out_29_qs;
+      end
+
+      addr_hit[62]: begin
+        reg_rdata_next[31:0] = data_out_30_qs;
+      end
+
+      addr_hit[63]: begin
+        reg_rdata_next[31:0] = data_out_31_qs;
       end
 
       default: begin

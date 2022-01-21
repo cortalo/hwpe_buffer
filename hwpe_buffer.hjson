@@ -5,23 +5,32 @@
     bus_interfaces: [ { protocol: "reg_iface", direction: "device" } ],
     regwidth: "32",
     registers: [
-        { name: "DATA_IN",
-          desc: "Inputs for hwpe_buffer",
-          swaccess: "wo",
-          fields: [
-              { bits: "31:0"
-              }
-          ],
+        { multireg:
+          { name: "DATA_IN",
+            desc: "Inputs for hwpe_buffer",
+            count: "32",
+            cname: "DATA_IN",
+            swaccess: "wo",
+            hwext: "false",
+            fields: [
+                { bits: "31:0"
+                }
+            ],
+          }
         },
-        { name: "DATA_OUT",
-          desc: "Output for hwpe_buffer",
-          swaccess: "ro",
-          hwaccess: "hwo",
-          hwext: "true",
-          fields: [
-              { bits: "31:0"
-              }
-          ],
+        { multireg:
+          { name: "DATA_OUT",
+            desc: "Output for hwpe_buffer",
+            count: "32",
+            cname: "DATA_OUT",
+            swaccess: "ro",
+            hwaccess: "hwo",
+            hwext: "true",
+            fields: [
+                { bits: "31:0"
+                }
+            ],
+          }
         }
-    ],
+    ]
 }

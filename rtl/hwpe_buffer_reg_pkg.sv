@@ -7,7 +7,7 @@
 package hwpe_buffer_reg_pkg;
 
   // Address widths within the block
-  parameter int BlockAw = 3;
+  parameter int BlockAw = 8;
 
   ////////////////////////////
   // Typedefs for registers //
@@ -15,39 +15,256 @@ package hwpe_buffer_reg_pkg;
 
   typedef struct packed {
     logic [31:0] q;
-  } hwpe_buffer_reg2hw_data_in_reg_t;
+  } hwpe_buffer_reg2hw_data_in_mreg_t;
 
   typedef struct packed {
     logic [31:0] d;
-  } hwpe_buffer_hw2reg_data_out_reg_t;
+  } hwpe_buffer_hw2reg_data_out_mreg_t;
 
   // Register -> HW type
   typedef struct packed {
-    hwpe_buffer_reg2hw_data_in_reg_t data_in; // [31:0]
+    hwpe_buffer_reg2hw_data_in_mreg_t [31:0] data_in; // [1023:0]
   } hwpe_buffer_reg2hw_t;
 
   // HW -> register type
   typedef struct packed {
-    hwpe_buffer_hw2reg_data_out_reg_t data_out; // [31:0]
+    hwpe_buffer_hw2reg_data_out_mreg_t [31:0] data_out; // [1023:0]
   } hwpe_buffer_hw2reg_t;
 
   // Register offsets
-  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_OFFSET = 3'h 0;
-  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_OFFSET = 3'h 4;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_0_OFFSET = 8'h 0;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_1_OFFSET = 8'h 4;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_2_OFFSET = 8'h 8;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_3_OFFSET = 8'h c;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_4_OFFSET = 8'h 10;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_5_OFFSET = 8'h 14;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_6_OFFSET = 8'h 18;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_7_OFFSET = 8'h 1c;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_8_OFFSET = 8'h 20;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_9_OFFSET = 8'h 24;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_10_OFFSET = 8'h 28;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_11_OFFSET = 8'h 2c;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_12_OFFSET = 8'h 30;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_13_OFFSET = 8'h 34;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_14_OFFSET = 8'h 38;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_15_OFFSET = 8'h 3c;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_16_OFFSET = 8'h 40;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_17_OFFSET = 8'h 44;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_18_OFFSET = 8'h 48;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_19_OFFSET = 8'h 4c;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_20_OFFSET = 8'h 50;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_21_OFFSET = 8'h 54;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_22_OFFSET = 8'h 58;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_23_OFFSET = 8'h 5c;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_24_OFFSET = 8'h 60;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_25_OFFSET = 8'h 64;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_26_OFFSET = 8'h 68;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_27_OFFSET = 8'h 6c;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_28_OFFSET = 8'h 70;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_29_OFFSET = 8'h 74;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_30_OFFSET = 8'h 78;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_IN_31_OFFSET = 8'h 7c;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_0_OFFSET = 8'h 80;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_1_OFFSET = 8'h 84;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_2_OFFSET = 8'h 88;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_3_OFFSET = 8'h 8c;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_4_OFFSET = 8'h 90;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_5_OFFSET = 8'h 94;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_6_OFFSET = 8'h 98;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_7_OFFSET = 8'h 9c;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_8_OFFSET = 8'h a0;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_9_OFFSET = 8'h a4;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_10_OFFSET = 8'h a8;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_11_OFFSET = 8'h ac;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_12_OFFSET = 8'h b0;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_13_OFFSET = 8'h b4;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_14_OFFSET = 8'h b8;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_15_OFFSET = 8'h bc;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_16_OFFSET = 8'h c0;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_17_OFFSET = 8'h c4;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_18_OFFSET = 8'h c8;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_19_OFFSET = 8'h cc;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_20_OFFSET = 8'h d0;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_21_OFFSET = 8'h d4;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_22_OFFSET = 8'h d8;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_23_OFFSET = 8'h dc;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_24_OFFSET = 8'h e0;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_25_OFFSET = 8'h e4;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_26_OFFSET = 8'h e8;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_27_OFFSET = 8'h ec;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_28_OFFSET = 8'h f0;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_29_OFFSET = 8'h f4;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_30_OFFSET = 8'h f8;
+  parameter logic [BlockAw-1:0] HWPE_BUFFER_DATA_OUT_31_OFFSET = 8'h fc;
 
   // Reset values for hwext registers and their fields
-  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_0_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_1_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_2_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_3_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_4_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_5_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_6_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_7_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_8_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_9_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_10_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_11_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_12_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_13_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_14_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_15_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_16_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_17_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_18_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_19_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_20_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_21_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_22_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_23_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_24_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_25_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_26_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_27_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_28_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_29_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_30_RESVAL = 32'h 0;
+  parameter logic [31:0] HWPE_BUFFER_DATA_OUT_31_RESVAL = 32'h 0;
 
   // Register index
   typedef enum int {
-    HWPE_BUFFER_DATA_IN,
-    HWPE_BUFFER_DATA_OUT
+    HWPE_BUFFER_DATA_IN_0,
+    HWPE_BUFFER_DATA_IN_1,
+    HWPE_BUFFER_DATA_IN_2,
+    HWPE_BUFFER_DATA_IN_3,
+    HWPE_BUFFER_DATA_IN_4,
+    HWPE_BUFFER_DATA_IN_5,
+    HWPE_BUFFER_DATA_IN_6,
+    HWPE_BUFFER_DATA_IN_7,
+    HWPE_BUFFER_DATA_IN_8,
+    HWPE_BUFFER_DATA_IN_9,
+    HWPE_BUFFER_DATA_IN_10,
+    HWPE_BUFFER_DATA_IN_11,
+    HWPE_BUFFER_DATA_IN_12,
+    HWPE_BUFFER_DATA_IN_13,
+    HWPE_BUFFER_DATA_IN_14,
+    HWPE_BUFFER_DATA_IN_15,
+    HWPE_BUFFER_DATA_IN_16,
+    HWPE_BUFFER_DATA_IN_17,
+    HWPE_BUFFER_DATA_IN_18,
+    HWPE_BUFFER_DATA_IN_19,
+    HWPE_BUFFER_DATA_IN_20,
+    HWPE_BUFFER_DATA_IN_21,
+    HWPE_BUFFER_DATA_IN_22,
+    HWPE_BUFFER_DATA_IN_23,
+    HWPE_BUFFER_DATA_IN_24,
+    HWPE_BUFFER_DATA_IN_25,
+    HWPE_BUFFER_DATA_IN_26,
+    HWPE_BUFFER_DATA_IN_27,
+    HWPE_BUFFER_DATA_IN_28,
+    HWPE_BUFFER_DATA_IN_29,
+    HWPE_BUFFER_DATA_IN_30,
+    HWPE_BUFFER_DATA_IN_31,
+    HWPE_BUFFER_DATA_OUT_0,
+    HWPE_BUFFER_DATA_OUT_1,
+    HWPE_BUFFER_DATA_OUT_2,
+    HWPE_BUFFER_DATA_OUT_3,
+    HWPE_BUFFER_DATA_OUT_4,
+    HWPE_BUFFER_DATA_OUT_5,
+    HWPE_BUFFER_DATA_OUT_6,
+    HWPE_BUFFER_DATA_OUT_7,
+    HWPE_BUFFER_DATA_OUT_8,
+    HWPE_BUFFER_DATA_OUT_9,
+    HWPE_BUFFER_DATA_OUT_10,
+    HWPE_BUFFER_DATA_OUT_11,
+    HWPE_BUFFER_DATA_OUT_12,
+    HWPE_BUFFER_DATA_OUT_13,
+    HWPE_BUFFER_DATA_OUT_14,
+    HWPE_BUFFER_DATA_OUT_15,
+    HWPE_BUFFER_DATA_OUT_16,
+    HWPE_BUFFER_DATA_OUT_17,
+    HWPE_BUFFER_DATA_OUT_18,
+    HWPE_BUFFER_DATA_OUT_19,
+    HWPE_BUFFER_DATA_OUT_20,
+    HWPE_BUFFER_DATA_OUT_21,
+    HWPE_BUFFER_DATA_OUT_22,
+    HWPE_BUFFER_DATA_OUT_23,
+    HWPE_BUFFER_DATA_OUT_24,
+    HWPE_BUFFER_DATA_OUT_25,
+    HWPE_BUFFER_DATA_OUT_26,
+    HWPE_BUFFER_DATA_OUT_27,
+    HWPE_BUFFER_DATA_OUT_28,
+    HWPE_BUFFER_DATA_OUT_29,
+    HWPE_BUFFER_DATA_OUT_30,
+    HWPE_BUFFER_DATA_OUT_31
   } hwpe_buffer_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] HWPE_BUFFER_PERMIT [2] = '{
-    4'b 1111, // index[0] HWPE_BUFFER_DATA_IN
-    4'b 1111  // index[1] HWPE_BUFFER_DATA_OUT
+  parameter logic [3:0] HWPE_BUFFER_PERMIT [64] = '{
+    4'b 1111, // index[ 0] HWPE_BUFFER_DATA_IN_0
+    4'b 1111, // index[ 1] HWPE_BUFFER_DATA_IN_1
+    4'b 1111, // index[ 2] HWPE_BUFFER_DATA_IN_2
+    4'b 1111, // index[ 3] HWPE_BUFFER_DATA_IN_3
+    4'b 1111, // index[ 4] HWPE_BUFFER_DATA_IN_4
+    4'b 1111, // index[ 5] HWPE_BUFFER_DATA_IN_5
+    4'b 1111, // index[ 6] HWPE_BUFFER_DATA_IN_6
+    4'b 1111, // index[ 7] HWPE_BUFFER_DATA_IN_7
+    4'b 1111, // index[ 8] HWPE_BUFFER_DATA_IN_8
+    4'b 1111, // index[ 9] HWPE_BUFFER_DATA_IN_9
+    4'b 1111, // index[10] HWPE_BUFFER_DATA_IN_10
+    4'b 1111, // index[11] HWPE_BUFFER_DATA_IN_11
+    4'b 1111, // index[12] HWPE_BUFFER_DATA_IN_12
+    4'b 1111, // index[13] HWPE_BUFFER_DATA_IN_13
+    4'b 1111, // index[14] HWPE_BUFFER_DATA_IN_14
+    4'b 1111, // index[15] HWPE_BUFFER_DATA_IN_15
+    4'b 1111, // index[16] HWPE_BUFFER_DATA_IN_16
+    4'b 1111, // index[17] HWPE_BUFFER_DATA_IN_17
+    4'b 1111, // index[18] HWPE_BUFFER_DATA_IN_18
+    4'b 1111, // index[19] HWPE_BUFFER_DATA_IN_19
+    4'b 1111, // index[20] HWPE_BUFFER_DATA_IN_20
+    4'b 1111, // index[21] HWPE_BUFFER_DATA_IN_21
+    4'b 1111, // index[22] HWPE_BUFFER_DATA_IN_22
+    4'b 1111, // index[23] HWPE_BUFFER_DATA_IN_23
+    4'b 1111, // index[24] HWPE_BUFFER_DATA_IN_24
+    4'b 1111, // index[25] HWPE_BUFFER_DATA_IN_25
+    4'b 1111, // index[26] HWPE_BUFFER_DATA_IN_26
+    4'b 1111, // index[27] HWPE_BUFFER_DATA_IN_27
+    4'b 1111, // index[28] HWPE_BUFFER_DATA_IN_28
+    4'b 1111, // index[29] HWPE_BUFFER_DATA_IN_29
+    4'b 1111, // index[30] HWPE_BUFFER_DATA_IN_30
+    4'b 1111, // index[31] HWPE_BUFFER_DATA_IN_31
+    4'b 1111, // index[32] HWPE_BUFFER_DATA_OUT_0
+    4'b 1111, // index[33] HWPE_BUFFER_DATA_OUT_1
+    4'b 1111, // index[34] HWPE_BUFFER_DATA_OUT_2
+    4'b 1111, // index[35] HWPE_BUFFER_DATA_OUT_3
+    4'b 1111, // index[36] HWPE_BUFFER_DATA_OUT_4
+    4'b 1111, // index[37] HWPE_BUFFER_DATA_OUT_5
+    4'b 1111, // index[38] HWPE_BUFFER_DATA_OUT_6
+    4'b 1111, // index[39] HWPE_BUFFER_DATA_OUT_7
+    4'b 1111, // index[40] HWPE_BUFFER_DATA_OUT_8
+    4'b 1111, // index[41] HWPE_BUFFER_DATA_OUT_9
+    4'b 1111, // index[42] HWPE_BUFFER_DATA_OUT_10
+    4'b 1111, // index[43] HWPE_BUFFER_DATA_OUT_11
+    4'b 1111, // index[44] HWPE_BUFFER_DATA_OUT_12
+    4'b 1111, // index[45] HWPE_BUFFER_DATA_OUT_13
+    4'b 1111, // index[46] HWPE_BUFFER_DATA_OUT_14
+    4'b 1111, // index[47] HWPE_BUFFER_DATA_OUT_15
+    4'b 1111, // index[48] HWPE_BUFFER_DATA_OUT_16
+    4'b 1111, // index[49] HWPE_BUFFER_DATA_OUT_17
+    4'b 1111, // index[50] HWPE_BUFFER_DATA_OUT_18
+    4'b 1111, // index[51] HWPE_BUFFER_DATA_OUT_19
+    4'b 1111, // index[52] HWPE_BUFFER_DATA_OUT_20
+    4'b 1111, // index[53] HWPE_BUFFER_DATA_OUT_21
+    4'b 1111, // index[54] HWPE_BUFFER_DATA_OUT_22
+    4'b 1111, // index[55] HWPE_BUFFER_DATA_OUT_23
+    4'b 1111, // index[56] HWPE_BUFFER_DATA_OUT_24
+    4'b 1111, // index[57] HWPE_BUFFER_DATA_OUT_25
+    4'b 1111, // index[58] HWPE_BUFFER_DATA_OUT_26
+    4'b 1111, // index[59] HWPE_BUFFER_DATA_OUT_27
+    4'b 1111, // index[60] HWPE_BUFFER_DATA_OUT_28
+    4'b 1111, // index[61] HWPE_BUFFER_DATA_OUT_29
+    4'b 1111, // index[62] HWPE_BUFFER_DATA_OUT_30
+    4'b 1111  // index[63] HWPE_BUFFER_DATA_OUT_31
   };
 
 endpackage

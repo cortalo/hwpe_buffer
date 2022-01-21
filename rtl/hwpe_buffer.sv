@@ -1,6 +1,6 @@
 module hwpe_buffer
     #(
-    parameter BUFFER_WIDTH=32
+    parameter BUFFER_WIDTH=1024
     )(
     input  logic                            clk_i,
     input  logic                            rst_ni,
